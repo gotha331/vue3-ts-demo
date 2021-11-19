@@ -3,7 +3,11 @@
   <h1 :style="{ backgroundColor: titleInfo.color }">{{ titleInfo.value }}</h1>
 
   <div>{{ counter }}</div>
+  <div>{{ doubleCounter }}</div>
 
+  <!-- 新增待办 -->
+
+  <input type="text" v-model="todoName" @keydown.enter="addTodo(newTodo(todoName))" />
   <!-- 待办事项列表 -->
   <div v-for="item in items" :key="item.id">{{ item.name }}</div>
 </template>
@@ -24,7 +28,8 @@ export default defineComponent({
     return {
       counter: 666,
       // 断言
-      items: [] as Todo[]
+      items: [] as Todo[],
+      todoName: ""
     }
   },
   created() {
@@ -34,7 +39,28 @@ export default defineComponent({
       completed: false
 
     })
+  },
+  computed: {
+    doubleCounter(): number {
+      return this.counter * 2
+    }
+  },
+  methods: {
+    newTodo(todoName: string): Todo {
+      return {
+        id: this.items.length + 1,
+        name: todoName,
+        completed: false
+      }
+    },
+
+    addTodo(todo: Todo): void {
+      this.items.push(todo)
+      this.todoName = ''
+
+    }
   }
+
 })
 
 </script>
