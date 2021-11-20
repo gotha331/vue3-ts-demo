@@ -17,5 +17,14 @@ export default defineConfig({
       'layouts': path.resolve(__dirname, 'src/layouts'),
     }
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://jsonplaceholder.typicode.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, "")
+      }
+    }
+  },
   plugins: [vue()]
 })

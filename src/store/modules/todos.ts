@@ -21,7 +21,7 @@ export default {
   },
   actions: {
     initTodo({ commit }) {
-      http.get<Todo>('https://jsonplaceholder.typicode.com/todos/1').then(res => {
+      http.get<Todo>('/todos/1').then(res => {
         console.log(res);
         commit("addTodo", res.data)
       })
