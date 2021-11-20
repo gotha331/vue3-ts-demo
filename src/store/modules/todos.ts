@@ -28,6 +28,13 @@ export default {
         }])
 
       }, 500);
+    },
+    addTodo({ commit, state }, payload: string) {
+      commit("addTodo", {
+        id: state.todos.length + 1,
+        name: payload,
+        completed: false
+      })
     }
   }
 } as Module<TodoState, State>

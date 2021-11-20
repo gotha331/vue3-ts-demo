@@ -6,7 +6,6 @@
   <div>{{ doubleCounter }}</div>
 
   <!-- 新增待办 -->
-
   <input type="text" v-model="todoName" @keydown.enter="addTodo(newTodo(todoName))" />
   <!-- 待办事项列表 -->
   <div v-for="item in items" :key="item.id">{{ item.name }}</div>

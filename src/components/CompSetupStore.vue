@@ -7,8 +7,7 @@
   <button @click="$store.commit('add')">增加一个数</button>
 
   <!-- 新增待办 -->
-
-  <input type="text" v-model="todoName" @keydown.enter="addTodo(newTodo(todoName))" />
+  <!-- <input type="text" v-model="todoName" @keydown.enter="addTodo(newTodo(todoName))" /> -->
   <!-- 待办事项列表 -->
   <div v-for="item in todos" :key="item.id">{{ item.name }}</div>
 </template>
@@ -41,8 +40,6 @@ const doubleCounter = computed(() => counter.value * 2)
 const todos = computed(() => store.state.todos?.todos)
 let todoName = ref('')
 
-// todos初始化
-store.dispatch('todos/initTodo')
 
 const newTodo = (todoName: string): Todo => {
   return {
