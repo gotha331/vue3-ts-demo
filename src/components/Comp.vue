@@ -8,7 +8,7 @@
   <!-- 新增待办 -->
   <input type="text" v-model="todoName" @keydown.enter="addTodo(newTodo(todoName))" />
   <!-- 待办事项列表 -->
-  <div v-for="item in items" :key="item.id">{{ item.name }}</div>
+  <div v-for="item in items" :key="item.id">{{ item.title }}</div>
 </template>
 
 <script lang="ts">
@@ -34,7 +34,7 @@ export default defineComponent({
   created() {
     this.items.push({
       id: 1,
-      name: 'vue3 + ts',
+      title: 'vue3 + ts',
       completed: false
 
     })
@@ -48,7 +48,7 @@ export default defineComponent({
     newTodo(todoName: string): Todo {
       return {
         id: this.items.length + 1,
-        name: todoName,
+        title: todoName,
         completed: false
       }
     },

@@ -9,7 +9,7 @@
   <!-- 新增待办 -->
   <!-- <input type="text" v-model="todoName" @keydown.enter="addTodo(newTodo(todoName))" /> -->
   <!-- 待办事项列表 -->
-  <div v-for="item in todos" :key="item.id">{{ item.name }}</div>
+  <div v-for="item in todos" :key="item.id">{{ item.title }}</div>
 </template>
 
 <script setup lang="ts">
@@ -44,7 +44,7 @@ let todoName = ref('')
 const newTodo = (todoName: string): Todo => {
   return {
     id: todos.value!.length + 1,
-    name: todoName,
+    title: todoName,
     completed: false
   }
 }

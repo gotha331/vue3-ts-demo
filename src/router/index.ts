@@ -27,10 +27,10 @@ const router = createRouter({
 })
 
 // 导航守卫
-router.beforeEach((to, from, next) => {
-  // 
+// router.beforeEach((to, from, next) => {
+//   // 
 
-})
+// })
 
 export default router
 

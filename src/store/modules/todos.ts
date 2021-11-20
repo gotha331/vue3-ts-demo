@@ -1,4 +1,5 @@
 import { Module } from "vuex";
+import http from "../../utils/request";
 import { State } from '../index'
 
 const initialState = {
@@ -20,21 +21,25 @@ export default {
   },
   actions: {
     initTodo({ commit }) {
-      setTimeout(() => {
-        commit("initTodo", [{
-          id: 1,
-          name: 'hello vue3 TS',
-          completed: false
-        }])
+      http.get<Todo>('https://jsonplaceholder.typicode.com/todos/1').then(res => {
+        console.log(res);
+        commit("addTodo", res.data)
+      })
 
-      }, 500);
+      // setTimeout(() => {
+      //   commit("initTodo", [{
+      //     id: 1,
+      //     name: 'hello vue3 TS',
+      //     completed: false
+      //   }])
+      // }, 500);
     },
     addTodo({ commit, state }, payload: string) {
       commit("addTodo", {
         id: state.todos.length + 1,
-        name: payload,
+        title: payload,
         completed: false
-      })
+      } as Todo)
     }
   }
 } as Module<TodoState, State>
